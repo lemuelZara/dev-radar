@@ -1,7 +1,6 @@
 const { Router } = require('express') // Módulo de roteamento
-const axios = require('axios') // Serviço de chamada a APIs
-const Dev = require('./models/Dev')
-
+const DevController = require('./controllers/DevController')
+const SearchController = require('./controllers/SearchController')
 const routes = Router()
 
 // request  : Requisição vinda de uma rota (front-end)
@@ -27,37 +26,10 @@ const routes = Router()
  *     -> Obs: não irá aparecer na URL
  */
 
-// Rota de acesso: GET
-routes.get('/', (request, response) => {
-    return response.json({
-        message: 'Welcome OmniStack 10.0 ! :)'
-    })
-})
 
-// Rota de cadastro dos Devs
-routes.post('/devs', async (request, response) => {
-    const { github_username, techs } = request.body
+routes.get('/devs', DevController.index)    // Rota de listagem dos Devs
+routes.post('/devs', DevController.store)   // Rota de cadastro dos Devs
 
-    // Separando a string de techs vindo do corpo da requisição para um Array
-    // split(',')               -> Separando a string pela vírgula
-    // map(tech => tech.trim()) -> Tirando os espaços (antes e depois)
-    const techsArray = techs.split(',').map(tech => tech.trim())
-
-    // Buscando os dados da API do GitHub
-    const responseAxios = await axios.get(`https://api.github.com/users/${github_username}`)
-
-    const { name = login, avatar_url, bio } = responseAxios.data
-
-    // Passando os dados para cadastro
-    const dev = await Dev.create({
-        name,
-        github_username,
-        bio,
-        avatar_url,
-        techs: techsArray
-    })
-
-    return response.json(dev)
-})
+routes.get('/search', SearchController.index)
 
 module.exports = routes
