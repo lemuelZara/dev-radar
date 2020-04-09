@@ -17,7 +17,7 @@ mongoose.connect(
     'mongodb+srv://dev-radar-admin:admin@cluster0-1lchw.mongodb.net/dev_radar?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
     }
 )
 
@@ -32,4 +32,5 @@ const server = https.createServer({
     passphrase: '3941'
 }, app)
 
-server.listen(3333) // Acessando localhost:3333
+server.listen(3333, '192.168.100.160') // Acessando localhost:3333
+// server.listen(3333, '<IP local da sua máquina>')

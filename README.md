@@ -2,7 +2,9 @@
 
 # dev-radar
 
-Obs: Para o `navigator.geolocation.getCurrentPosition()` funcionar, deverá seu usado o seguinte comando na pasta onde o projeto foi criado com `create react-app`.
+Alguns problemas podem acontecer dependendo da Rede
+
+Obs: Para o `navigator.geolocation.getCurrentPosition()` funcionar (Dispositivos móveis que acessam a aplicação via Navegador Mobile), deverá seu usado o seguinte comando na pasta onde o projeto foi criado com `create react-app`.
 
 ```
 set HTTPS=true&&yarn(or npm) start
@@ -37,4 +39,6 @@ Axios
 ReactJS
 
 Yarn
+
+OpenSSL
 
