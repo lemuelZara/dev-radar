@@ -1,4 +1,6 @@
 const express = require('express')
+const https = require('https')
+const fs = require('fs')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const routes = require('./routes')
@@ -22,4 +24,12 @@ mongoose.connect(
 app.use(cors()) // Libera o acesso externo
 app.use(express.json()) // Entender o formato JSON
 app.use(routes)
-app.listen(3333) // Acessando localhost:3333
+
+// Adicionando certificados para reconhecer HTTPS
+const server = https.createServer({
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem'),
+    passphrase: '3941'
+}, app)
+
+server.listen(3333) // Acessando localhost:3333
