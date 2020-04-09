@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './styles.css'
+
 export const DevItem = ({ dev }) => {
     return (
         <li className="dev-item">
