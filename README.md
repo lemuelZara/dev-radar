@@ -1,3 +1,5 @@
+### Arquivo em edição!
+
 # dev-radar
 
 Obs: Para o `navigator.geolocation.getCurrentPosition()` funcionar, deverá seu usado o seguinte comando na pasta onde o projeto foi criado com `create react-app`.
