@@ -25,8 +25,6 @@ const routes = Router()
  *     -> http://localhost:333/user/
  *     -> Obs: não irá aparecer na URL
  */
-
-
 routes.get('/devs', DevController.index)    // Rota de listagem dos Devs
 routes.post('/devs', DevController.store)   // Rota de cadastro dos Devs
 
