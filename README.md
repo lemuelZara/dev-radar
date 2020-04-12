@@ -4,23 +4,13 @@
 
 Alguns problemas podem acontecer dependendo da Rede
 
-Obs: Para o `navigator.geolocation.getCurrentPosition()` funcionar (Dispositivos móveis que acessam a aplicação via Navegador Mobile), deverá seu usado o seguinte comando na pasta onde o projeto foi criado com `create react-app`.
+Obs: Para o `navigator.geolocation.getCurrentPosition()` funcionar (Dispositivos móveis que acessam a aplicação via Navegador Mobile)
 
-```
-set HTTPS=true&&yarn(or npm) start
-```
-Mais informações: https://developers.google.com/web/updates/2016/04/geolocation-on-secure-contexts-only
+`edge://flags/#unsafely-treat-insecure-origin-as-secure` : Microsoft Edge
+`chrome://flags/#unsafely-treat-insecure-origin-as-secure` : Google Chrome
 
-Nesse caso, precisará utilizar um servidor HTTPS, então utilize esse comando para gerar um certificado válido
-`openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365`
-
-    const server = https.createServer({
-    key: fs.readFileSync('./key.pem'),
-    cert: fs.readFileSync('./cert.pem'),
-    passphrase: '3941'
-}, app)
-
-server.listen(3333)
+Deixe a opção como **Enable**
+Coloque o IP da sua aplicação `http://localhost:3000`, `http://192.168.2.1:3000`
 
 NodeJS
 
@@ -40,5 +30,4 @@ ReactJS
 
 Yarn
 
-OpenSSL
-
+Expo
