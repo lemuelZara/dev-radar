@@ -1,17 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Dimensions, Image, TextInput, TouchableOpacity } from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    Image,
+    TextInput,
+    TouchableOpacity
+} from 'react-native'
 import MapView, { Marker, Callout } from 'react-native-maps'
 import { useNavigation } from '@react-navigation/native'
 import * as Location from 'expo-location'
 import { MaterialIcons } from '@expo/vector-icons'
 
+import { api } from '../services/api'
+
 export const Main = () => {
+    const [devs, setDevs] = useState([])
+
+    // Armazenar a posição atual do Mapa
     const [currentRegion, setCurrentRegion] = useState(null)
+
+    // Armazenar o que o usuário digitou no Input
+    const [techs, setTechs] = useState('')
 
     const navigation = useNavigation()
 
-    const navigateToProfile = () => {
-        navigation.navigate('Profile', { github_username: 'lemuelZara' })
+    const navigateToProfile = github_username => {
+        navigation.navigate('Profile', { github_username })
     }
 
     useEffect(() => {
@@ -37,26 +53,54 @@ export const Main = () => {
         loadInitialPosition()
     }, [])
 
+    const loadDevs = async () => {
+        const { latitude, longitude } = currentRegion
+
+        const response = await api.get('/search', {
+            params: {
+                latitude,
+                longitude,
+                techs
+            }
+        })
+
+        setDevs(response.data)
+    }
+
+    const handleRegionChanged = region => {
+        setCurrentRegion(region)
+    }
+
     if (!currentRegion) {
         return null
     }
 
     return (
         <>
-            <MapView style={styles.mapStyle} initialRegion={currentRegion}>
-                <Marker coordinate={{ latitude: -20.354880, longitude: -50.184209 }}>
-                    <Image style={styles.avatar} source={{ uri: 'https://avatars0.githubusercontent.com/u/55895642?s=460&u=23d04221f1435a5fcd494b20ebdeca20ce24b46a&v=4' }} />
+            <MapView
+                style={styles.mapStyle}
+                initialRegion={currentRegion}
+                onRegionChangeComplete={handleRegionChanged}>
+                {devs.map(dev => (
+                    <Marker
+                        key={dev._id}
+                        coordinate={{
+                            latitude: dev.location.coordinates[1],
+                            longitude: dev.location.coordinates[0]
+                        }}>
+                        <Image
+                            style={styles.avatar}
+                            source={{ uri: dev.avatar_url }} />
 
-                    <Callout onPress={() => {
-                        navigateToProfile()
-                    }}>
-                        <View style={styles.callout}>
-                            <Text style={styles.devName}>Lemuel Coelho Zara</Text>
-                            <Text style={styles.devBio}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi hic nam voluptates vitae, reiciendis ducimus voluptatum? Qui numquam accusamus odio atque, illum incidunt. Ratione fugiat facilis rem magni culpa a!</Text>
-                            <Text style={styles.devTechs}>Node.js, Flutter</Text>
-                        </View>
-                    </Callout>
-                </Marker>
+                        <Callout onPress={() => { navigateToProfile(dev.github_username) }}>
+                            <View style={styles.callout}>
+                                <Text style={styles.devName}>{dev.name}</Text>
+                                <Text style={styles.devBio}>{dev.bio}</Text>
+                                <Text style={styles.devTechs}>{dev.techs.join(', ')}</Text>
+                            </View>
+                        </Callout>
+                    </Marker>
+                ))}
             </MapView>
             <View style={styles.searchForm}>
                 <TextInput
@@ -65,9 +109,10 @@ export const Main = () => {
                     placeholderTextColor="#999"
                     autoCapitalize="words"
                     autoCorrect={false}
-                />
+                    onChangeText={setTechs}
+                    value={techs}/>
 
-                <TouchableOpacity style={styles.loadButton} onPress={() => { }}>
+                <TouchableOpacity style={styles.loadButton} onPress={loadDevs}>
                     <MaterialIcons name="my-location" size={25} color="#fff" />
                 </TouchableOpacity>
             </View>
@@ -82,7 +127,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
     },
- 
+
     avatar: {
         width: 54,
         height: 54,
