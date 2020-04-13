@@ -47,6 +47,7 @@ Para a construção do seguinte projeto foi utilizada as seguintes tecnologias:
 - [Mongoose](https://mongoosejs.com/)
 - [Axios](https://github.com/axios/axios)
 - [Yarn](https://yarnpkg.com/)
+- [Socket.io](https://socket.io)
 
 ## Observações
 
