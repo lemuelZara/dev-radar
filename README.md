@@ -20,14 +20,14 @@ Coloque o IP da sua aplicação
 `http://localhost:3000` ou `http://192.168.2.1:3000`
 
 
-
-﻿<h1 align="center">
-    <img alt="Be The Hero" src="assets/logo.svg" width="250px" />
+<p align="center"><strong style="color: #8e4dff;">DevRadar</strong></p>
+<h1 align="center">
+    <img alt="DevRadar" src="assets/radar.png" width="150px" />
 </h1>
 <h4 align="center"> 
-	:heavy_check_mark: 🚀 Semana OmniStack 11.0 :heavy_check_mark:
+	:heavy_check_mark: 🚀 Semana OmniStack 10.0 :heavy_check_mark:
 </h4>
-<p align="center">Projeto <strong>Be The Hero</strong> desenvolvido durante a Omnistack da <a href="https://rocketseat.com.br">Rocketseat</a> 🚀👩🏽‍🚀</p>
+<p align="center">Projeto <strong>DevRadar</strong> desenvolvido durante a Omnistack da <a href="https://rocketseat.com.br">Rocketseat</a> 🚀👩🏽‍🚀</p>
 <p align="center">
   <a href="https://www.linkedin.com/in/lemuelzara/">
     <img alt="Made by LemuelZara" src="https://img.shields.io/badge/made%20by-Lemuel%20Zara-%2304D361">
@@ -45,7 +45,7 @@ Coloque o IP da sua aplicação
 
 ## 💻 Projeto
 
-O Be The Hero é um projeto que tem como objetivo unir pessoas com o intuito de ajudar ONGs.
+O DevRadar é uma aplicação que auxilia a busca por Devs em uma determinada localização, com filtros de quais tecnologias ele trabalha e distância no mapa.
 
 <h1 align="center">
     <img alt="Login-Page" title="Login-Page" src="assets/be-the-hero-web.png" width="1080px" />
