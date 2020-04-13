@@ -3,7 +3,6 @@
   <img src="https://github.com/Rocketseat/semana-omnistack-10/raw/master/.github/devradar.svg?sanitize=true" alt="DevRadar" width="240">
 <br>
 <br>
-DevRadar
 </h1>
 <h4 align="center"> 
 	:heavy_check_mark: 🚀 Semana OmniStack 10.0 :heavy_check_mark:
