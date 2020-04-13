@@ -28,10 +28,7 @@
 O DevRadar é uma aplicação que auxilia a busca por Devs em uma determinada localização, com filtros de quais tecnologias ele trabalha e distância no mapa.
 
 <h1 align="center">
-    <img alt="Login-Page" title="Login-Page" src="assets/be-the-hero-web.png" width="1080px" />
-</h1>
-<h1 align="center">
-    <img alt="Mobile-Page" title="Login-Page" src="assets/be-the-hero-phone.png" width="1080px" />
+    <img alt="Index Page" title="IndexPage" src="assets/index.png" width="1080px" />
 </h1>
 
 ## :rocket: Tecnologias
