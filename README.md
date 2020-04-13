@@ -1,25 +1,3 @@
-### Arquivo em edição!
-
-# DevRadar
-
-Alguns problemas podem acontecer dependendo da Rede
-
-Obs: Para o `navigator.geolocation.getCurrentPosition()` funcionar (Dispositivos móveis que acessam a aplicação via Navegador Mobile)
-
-**Microsoft Edge**
-
-- `edge://flags/#unsafely-treat-insecure-origin-as-secure` 
-
-**Google Chrome**
-
-- `chrome://flags/#unsafely-treat-insecure-origin-as-secure` 
-
-
-Deixe a opção como **Enable**
-Coloque o IP da sua aplicação 
-`http://localhost:3000` ou `http://192.168.2.1:3000`
-
-
 <p align="center"><strong style="color: #8e4dff;">DevRadar</strong></p>
 <h1 align="center">
     <img alt="DevRadar" src="assets/radar.png" width="150px" />
@@ -69,3 +47,20 @@ Para a construção do seguinte projeto foi utilizada as seguintes tecnologias:
 - [Mongoose](https://mongoosejs.com/)
 - [Axios](https://github.com/axios/axios)
 - [Yarn](https://yarnpkg.com/)
+
+## Observações
+
+Obs: Para o `navigator.geolocation.getCurrentPosition()` funcionar (Dispositivos móveis que acessam a aplicação via Navegador Mobile) terá que realizar o seguinte procedimento: 
+
+**Microsoft Edge**
+
+- `edge://flags/#unsafely-treat-insecure-origin-as-secure` 
+
+**Google Chrome**
+
+- `chrome://flags/#unsafely-treat-insecure-origin-as-secure` 
+
+
+Deixe a opção como **Enable**
+Coloque o IP da sua aplicação 
+`http://localhost:3000` ou `http://192.168.2.1:3000`
