@@ -14,6 +14,7 @@ import * as Location from 'expo-location'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { api } from '../services/api'
+import { connect, disconnect, subscribeToNewDevs } from '../services/socket'
 
 export const Main = () => {
     const [devs, setDevs] = useState([])
@@ -53,6 +54,22 @@ export const Main = () => {
         loadInitialPosition()
     }, [])
 
+    useEffect(() => {
+        subscribeToNewDevs(dev => setDevs([...devs, dev]))
+    }, [devs])
+
+    const setupWebSocket = () => {
+        disconnect()
+
+        const { latitude, longitude } = currentRegion
+
+        connect(
+            latitude,
+            longitude,
+            techs
+        )
+    }
+
     const loadDevs = async () => {
         const { latitude, longitude } = currentRegion
 
@@ -65,6 +82,7 @@ export const Main = () => {
         })
 
         setDevs(response.data)
+        setupWebSocket()
     }
 
     const handleRegionChanged = region => {
@@ -110,7 +128,7 @@ export const Main = () => {
                     autoCapitalize="words"
                     autoCorrect={false}
                     onChangeText={setTechs}
-                    value={techs}/>
+                    value={techs} />
 
                 <TouchableOpacity style={styles.loadButton} onPress={loadDevs}>
                     <MaterialIcons name="my-location" size={25} color="#fff" />
